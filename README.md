@@ -16,11 +16,11 @@ Idée générale : Faire un site de streaming automatiser avec du web scraping o
 		platforme vidéo qui on une politique souple dans leur pays
 
 PUSH ON GIT
-$ git status
-$ git add --all .
-$ git status
-$ git commit -m "Modified templates to display posts from database."
-$ git push
+	$ git status
+	$ git add --all .
+	$ git status
+	$ git commit -m "message"
+	$ git push
 
 UPDATE site en prod
 
