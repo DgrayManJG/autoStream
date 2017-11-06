@@ -17,12 +17,9 @@ Idée générale : Faire un site de streaming automatiser avec du web scraping o
 
 PUSH ON GIT
 $ git status
-[...]
 $ git add --all .
 $ git status
-[...]
 $ git commit -m "Modified templates to display posts from database."
-[...]
 $ git push
 
 UPDATE site en prod
