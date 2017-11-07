@@ -7,6 +7,7 @@ utils link :
 https://docs.djangoproject.com/fr/1.11/intro/tutorial01/
 
 https://tutorial.djangogirls.org/fr/deploy/
+https://tutorial-extensions.djangogirls.org/en/
 
 Site de streaming automatiser
 
