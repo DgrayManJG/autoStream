@@ -15,6 +15,12 @@ Idée générale : Faire un site de streaming automatiser avec du web scraping o
 		Aucune source ne serai héberger sur notre site, seulement des appels a des 			
 		platforme vidéo qui on une politique souple dans leur pays
 
+http://www.seleniumhq.org/
+web scraping
+jenkins
+rutube
+
+
 PUSH ON GIT
 	$ git status
 	$ git add --all .
