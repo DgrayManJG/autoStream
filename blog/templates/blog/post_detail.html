@@ -4,17 +4,47 @@
     <div class="post">
         {% if post.published_date %}
             <div class="date">
-                {{ post.published_date }}
+                {{ post.published_date }} by {{ post.author.username }}
             </div>
         {% else %}
-            <a class="btn btn-secondary float-right" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+            <a class="btn btn-secondary float-right" href="{% url 'post_publish' pk=post.pk %}">Publish <i class="fa fa-gears" aria-hidden="true"></i></a>
         {% endif %}
         <h1>{{ post.title }} </h1>
         <p>{{ post.text|linebreaksbr }}</p>
 
         {% if user.is_authenticated %}
           <a class="btn btn-secondary" href="{% url 'post_edit' pk=post.pk %}">Edit <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-          <a class="btn btn-secondary" href="{% url 'post_remove' pk=post.pk %}">Remove <i class="icon-remove"></i></a>
+          <a class="btn btn-secondary" href="{% url 'post_remove' pk=post.pk %}">Remove <i class="fa fa-times" aria-hidden="true"></i></a>
         {% endif %}
     </div>
+
+    <div class="row">
+      <div class="col-md-8">
+        <h3>Comments</h3>
+      </div>
+      <div class="col-md-4">
+        <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+      </div>
+    </div>
+
+    <hr>
+
+    {% for comment in post.comments.all %}
+      {% if user.is_authenticated or comment.approved_comment %}
+        <div class="comment">
+            <div class="date">
+                {{ comment.created_date }}
+                {% if not comment.approved_comment %}
+                    <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><i class="fa fa-check" aria-hidden="true"></i></a>
+                {% endif %}
+            </div>
+            <strong>{{ comment.author }}</strong>
+            <p>{{ comment.text|linebreaks }}</p>
+        </div>
+      {% endif %}
+    {% empty %}
+        <p>No comments here yet :(</p>
+    {% endfor %}
+
 {% endblock %}
